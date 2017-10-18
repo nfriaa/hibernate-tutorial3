@@ -14,7 +14,7 @@ A sample code to use Hibernate in **Annotations** mode
 We will use the same database / table
 
 ## 2. Maven "pom.xml" dependencies
-```
+```xml
 <dependencies>
     <!-- MySQL connector -->
     <dependency>
@@ -32,16 +32,16 @@ We will use the same database / table
 ```
 
 ## 3. Changes in "hibernate.cfg.xml"
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
         <!-- MySQL -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/persist_db</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/persist_db?useTimezone=true&amp;serverTimezone=UTC</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.connection.password"></property>
 
         <!-- Hibernate -->
         <property name="show_sql">true</property>
@@ -60,7 +60,7 @@ We will use the same database / table
 There is no "Product.hbm.xml" mapping file. To do mapping we will use Hibernate **Annotations** instead
 
 ## 4. Annotations in POJO classes "Product.java"
-```
+```java
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
